@@ -12,7 +12,7 @@ import com.example.product.service.ProductService;
 @RestController
 @RequestMapping("/products")
 public class Product {
-    private ProductService productService;
+    private final ProductService productService;
     
     public Product(ProductService productService) {
         this.productService = productService;
