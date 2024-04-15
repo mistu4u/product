@@ -16,7 +16,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import com.example.product.dto.ProductDTO;
 
 @WebMvcTest
-public class ProductApplicationTest {
+public class ProductEntityApplicationTest {
     @MockBean
     private ProductService productService;
     @Autowired

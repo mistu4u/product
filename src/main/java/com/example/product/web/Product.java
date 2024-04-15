@@ -1,13 +1,14 @@
 package com.example.product.web;
 
-import java.util.List;
-
+import com.example.product.dto.ProductDTO;
+import com.example.product.service.ProductService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.product.dto.ProductDTO;
-import com.example.product.service.ProductService;
+import java.util.List;
 
 @RestController
 @RequestMapping("/products")
@@ -21,5 +22,9 @@ public class Product {
     @GetMapping
     public List<ProductDTO> getProducts(){
         return productService.getAllProducts();
+    }
+    @PostMapping
+    public void createProduct(@RequestBody ProductDTO productDTO){
+        productService.createProduct(productDTO);
     }
 }
