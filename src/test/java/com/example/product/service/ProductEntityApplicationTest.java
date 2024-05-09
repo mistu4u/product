@@ -27,6 +27,5 @@ public class ProductEntityApplicationTest {
         when(productService.getAllProducts()).thenReturn(List.of(new ProductDTO(1, "tets")));
         mockMvc.perform(get("/product/all")).andExpect(status().isOk())
                 .andDo(print());
-
     }
 }
