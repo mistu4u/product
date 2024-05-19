@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: product
+  labels:
+    app: product
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: product
+  template:
+    metadata:
+      labels:
+        app: product
+    spec:
+      containers:
+        - name: dev-db
+          image: mysql:latest
+          ports:
+            - containerPort: 3306
+          env:
+            - name: MYSQL_DATABASE
+              value: mydatabase
+            - name: MYSQL_PASSWORD
+              value: secret
+            - name: MYSQL_ROOT_PASSWORD
+              value: verysecret
+            - name: MYSQL_USER
+              value: myuser
+        - name: product-app
+          image: mistu25u/product-app:kube
+          ports:
+            - containerPort: 8080
