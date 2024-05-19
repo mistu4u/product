@@ -8,5 +8,3 @@ services:
       - 'MYSQL_USER=myuser'
     ports:
       - '3306:3306'
-  nginx:
-    image: 'nginx:latest'
