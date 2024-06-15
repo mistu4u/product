@@ -29,6 +29,12 @@ spec:
             - name: MYSQL_USER
               value: myuser
         - name: product-app
-          image: mistu25u/product-app:kube
+          image: mistu25u/product-app:kubeWithActuator
+          livenessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8080
+            periodSeconds: 60
+            initialDelaySeconds: 10
           ports:
             - containerPort: 8080
