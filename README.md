@@ -34,6 +34,8 @@ To expose the deployment using a service:
 
 ```kubectl expose deployment product --name=product-service --port=8080 --target-port=8080 --type=NodePort```
 
+Or, you can use the `service.yaml` file.
+
 To get an external ip for minikube,
 
 ```minikube service product-service```
