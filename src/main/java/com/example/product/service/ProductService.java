@@ -10,17 +10,18 @@ import java.util.List;
 @Service
 public class ProductService {
     private final ProductRepository productRepository;
-
-    public ProductService(ProductRepository productRepository) {
+    private final ProductMapper productMapper;
+    public ProductService(ProductRepository productRepository, ProductMapper productMapper) {
         this.productRepository = productRepository;
+        this.productMapper = productMapper;
     }
 
     public List<ProductDTO> getAllProducts() {
-        return ProductMapper.PRODUCT_MAPPER.fromProducts(productRepository.findAll());
+        return productMapper.fromProducts(productRepository.findAll());
     }
 
     public void createProduct(ProductDTO productDTO) {
-        productRepository.save(ProductMapper.PRODUCT_MAPPER.fromProductDTO(productDTO));
+        productRepository.save(productMapper.fromProductDTO(productDTO));
     }
 }
 
